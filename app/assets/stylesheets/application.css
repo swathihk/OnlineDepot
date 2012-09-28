@@ -1,0 +1,79 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+/*#flash_notice, #flash_error, #flash_alert {*/
+    /*padding: 5px 8px;*/
+    /*margin: 10px 0;*/
+/*}*/
+
+/*#flash_notice {*/
+    /*margin-top:20px;*/
+    /*background-color: #CFC;*/
+    /*border: solid 1px #6C6;*/
+/*}*/
+
+/*#flash_error, #flash_alert {*/
+    /*background-color: #FCC;*/
+    /*border: solid 1px #C66;
+} */
+/*http://www.456bereastreet.com/archive/200410/bring_on_the_tables/
+http://pythoughts.com/table-style-css/*/
+th {
+    font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+    sans-serif;
+    color: #6D929B;
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 6px 6px 6px 12px;
+    background: #CAE8EA url(bg_header.jpg) no-repeat;
+}
+
+/*th.nobg {*/
+    /*border-top: 0;*/
+    /*border-left: 0;*/
+    /*border-right: 1px solid #C1DAD7;*/
+    /*background: none;*/
+/*}*/
+/*th.spec {*/
+    /*border-left: 1px solid #C1DAD7;*/
+    /*border-top: 0;*/
+    /*background: #fff url(bullet1.gif) no-repeat;*/
+    /*font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica,*/
+    /*sans-serif;*/
+/*}*/
+
+/*th.specalt {*/
+    /*border-left: 1px solid #C1DAD7;*/
+    /*border-top: 0;*/
+    /*background: #f5fafa url(bullet2.gif) no-repeat;*/
+    /*font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica,*/
+    /*sans-serif;*/
+    /*color: #B4AA9D;*/
+/*}*/
+td {
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #fff;
+    padding: 6px 6px 6px 12px;
+    color: #6D929B;
+}
+
+
+td.alt {
+    background: #F5FAFA;
+    color: #B4AA9D;
+}

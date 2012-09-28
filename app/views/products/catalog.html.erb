@@ -1,0 +1,24 @@
+<table id="mytable" cellspacing="0">
+  <th>Check for orders Product</th>
+  <th>Quantity</th>
+  <th>product Name</th>
+  <th>Product price</th>
+  <th>Total Price</th>
+ <%=form_tag  :action=>"order" do %>
+<%@product_all_cart.each do |f|%>
+    <%@product=Product.find(f.product_id)%>
+
+      <tr>
+        <%#= select "cart","quantity#{car.id}", [1,2,3,4,5],{:prompt=>"Quantity"},
+                   { :onchange => "$.ajax({url: '../cart/display_total',
+      data: 'count=' + value + '&cart=' + #{car.id}})"}%>
+        <td><%=check_box_tag "check#{f.id}" ,'1'%></td>
+        <td><%=select_tag "quan#{f.id}", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe,:onchange=>"$.ajax({url: '../products/quantity',data: 'quantity=' + value + '&cart_id=' + #{f.id} })" %></td>
+        <td><%=@product.name%></td>
+        <td><%=@product.price %></td>
+        <td id="quantity<%=f.id%>"></td>
+        </tr>
+  <%end%>
+    </table>
+<%=submit_tag "save"%>
+ <%end%>

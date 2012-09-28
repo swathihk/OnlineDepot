@@ -1,0 +1,18 @@
+ <table>
+  <th>Product Name</th>
+
+     <th>Quantity</th>
+     <th>Product Total Price</th>
+     <th>Product Receipt Number</th>
+<%@order=Order.find_all_by_user_id([session[:user_id]])%>
+      <%@order.each do |i|%>
+          <%@product=Product.find(i.product_id)%>
+
+          <tr><td>
+            <%=@product.name%></td>
+          <td><%=i.quantity %></td>
+          <td><%= i.total_price %></td>
+          <td><%=i.receipt_id%></td> </tr>
+          <!--<tr><td></td> </tr>-->
+      <%end%>
+ </table>

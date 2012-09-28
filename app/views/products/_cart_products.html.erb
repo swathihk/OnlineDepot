@@ -1,0 +1,11 @@
+<table id="mytable" cellspacing="0">
+  <th>Product Name</th>
+<%@cart_all=Cart.find_all_by_user_id(session[:user_id])%>
+<%@cart_all.each do |i|%>
+    <%@product=Product.find(i.product_id)%>
+
+     <tr><td>
+    <%=@product.name%></td> </tr>
+
+<%end%>
+</table>
