@@ -1,9 +1,25 @@
-<table>
+<table cellspacing="0" >
 <%= form_for @user ,:url=>{:action=>"signup"} do |t| %>
-    <tr><td>Username</td><td> <%= t.text_field :name%></td></tr>
-      <tr><td>Password</td><td><%= t.password_field :password%></td></tr>
-      <tr><td>Email</td><td><%= t.email_field :email%></td></tr>
-      <tr><td>Role Type</td><td><%= t.collection_select :role_id ,Role.all,:id,:role_name%></td></tr>
+      <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this Users Details from being saved:</h2>
+
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+    <tr><td>Username</td><td> <%= t.text_field :name, :size => 20%></td></tr>
+      <tr><td>Password</td><td><%= t.password_field :password ,:size => 20%></td></tr>
+      <tr><td>Date Of Birth</td><td><%= t.date_select :date_of_birth ,:start_year => 1975%></td></tr>
+      <tr><td>Phone Number</td><td><%= t.phone_field :phone_number,:size => 20%></td></tr>
+      <tr><td>Email</td><td><%= t.email_field :email,:size => 20%></td></tr>
+      <tr><td>Confirm Email </td><td><%= t.email_field :email_confirmation,:size => 20 %></td></tr>
+      <tr><td>Company Address </td><td><%= t.text_area :company_address ,:size => "20x5"%></td></tr>
+      <tr><td>Role Type</td><td><%= t.collection_select :role_id ,Role.limit(2),:id,:role_name%></td></tr>
+      <tr><td>Term and Conditions</td><td><%= t.check_box :terms_of_service  %>  </td></tr>
       <tr><td></td><td><%= t.submit "Signup" %></td></tr>
 <%end %>
 </table>

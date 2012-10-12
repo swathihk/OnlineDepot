@@ -45,6 +45,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(params[:product])
+    logger.info"-------------#{params[:name]}------------"
     #@user_id=session[:user_id]
     respond_to do |format|
       @product.user_id=session[:user_id]
@@ -113,31 +114,36 @@ class ProductsController < ApplicationController
     #@cart_value=
   end
   def order
-    f=Cart.find_all_by_user_id(session[:user_id])
-    @last=Order.last
+    @user=User.find(session[:user_id])
+    @mess="cxxcvxcvxcv"
+    #if @user.role_id==1
+      f=Cart.find_all_by_user_id(session[:user_id])
+      @last=Order.last
 
-    f.each do |cart|
-      if params["check#{cart.id}"]=="1"
-        product=Product.find(cart.id)
-        if @last.receipt_id.nil?
-          @receipt_number="1001"
-        else
-          @receipt_number=@last.receipt_id.succ
+      f.each do |cart|
+        if params["check#{cart.id}"]=="1"
+          product=Product.find(cart.id)
+          if @last.receipt_id.nil?
+            @receipt_number="1001"
+          else
+            @receipt_number=@last.receipt_id.succ
+          end
+          @order=Order.new
+          @order.product_id=cart.product_id
+          @order.user_id=session[:user_id]
+          @order.quantity=params["quan#{cart.id}"]
+          @order.total_price=product.price.to_i * @order.quantity.to_i
+          @order.order_unique_id=Time.now.to_i
+          @order.receipt_id=@receipt_number
+          if @order.save
+            #@user=User.find(session[:user_id])
+            #UserMailer.payment_mail(@user).deliver
+            @cart_destroy=Cart.where(session[:user_id]).destroy_all
+          end
         end
-        @order=Order.new
-        @order.product_id=cart.product_id
-        @order.user_id=session[:user_id]
-        @order.quantity=params["quan#{cart.id}"]
-        @order.total_price=product.price.to_i * @order.quantity.to_i
-        @order.order_unique_id=Time.now.to_i
-        @order.receipt_id=@receipt_number
-        if @order.save
-        #@user=User.find(session[:user_id])
-        #UserMailer.payment_mail(@user).deliver
-        @cart_destroy=Cart.where(session[:user_id]).destroy_all
-       end
       end
-    end
-  end
+    #else
 
+    #end
+  end
 end

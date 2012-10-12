@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925144408) do
+ActiveRecord::Schema.define(:version => 20121006045113) do
 
   create_table "carts", :force => true do |t|
     t.integer  "quantity"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(:version => 20120925144408) do
     t.integer  "total_price"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "galleries", :force => true do |t|
+    t.integer  "photographer_id"
+    t.string   "name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "orders", :force => true do |t|
@@ -31,6 +44,35 @@ ActiveRecord::Schema.define(:version => 20120925144408) do
     t.integer  "order_unique_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "phone_numbers", :force => true do |t|
+    t.integer  "callable_id"
+    t.string   "callable_type"
+    t.string   "number"
+    t.string   "location"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "photographers", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "gallery_id"
+    t.string   "name"
+    t.string   "file_path"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
@@ -54,8 +96,11 @@ ActiveRecord::Schema.define(:version => 20120925144408) do
     t.string   "password"
     t.string   "email"
     t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "phone_number"
+    t.date     "date_of_birth"
+    t.string   "company_address"
   end
 
 end

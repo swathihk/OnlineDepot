@@ -1,0 +1,23 @@
+<%  User.find_each(:start => 2, :batch_size => 3) do |user|   %>
+<%=user.name%>
+<% end%>
+
+<%#  %>
+<br/>
+vxvxcvxcvxcvx<%= @userss.inspect %>
+bnvbnvb<%= @u%>
+<%= @take.inspect%>
+<p><%= @first2.inspect %></p>
+<table>
+<th>product name</th>
+<th> user name  </th>
+<th>total price</th>
+<% @orders.each do |i| %>
+    <tr>
+<%@prod=Product.find(i.product_id)%>
+ <td>      <%= @prod.name %>    </td>
+<%@username=User.find(i.user_id)  %>
+      <td>  <%=@username.name%> </td>
+      <td>  <%= i.total_price%> </tr></td>
+<% end %>
+</table>

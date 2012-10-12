@@ -1,11 +1,13 @@
 OnlineDepot::Application.routes.draw do
-  resources :products  do
+  get "galleries/index"
 
-    collection do
+  resources :products  do
+   collection do
       get "cart"
       get "catalog"
       get "quantity"
       post "order"
+      get "order"
     end
   end
 
@@ -15,6 +17,8 @@ OnlineDepot::Application.routes.draw do
   # first created -> highest priority.
   match 'user/create_role' => 'user#create_role'
   match 'user/index' => 'user#index'
+  match 'user/records' => 'user#records'
+
   match 'user/signup' => 'user#signup'
   match 'user/login' => 'user#login'
   match 'user/logout' => 'user#logout'

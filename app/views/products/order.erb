@@ -1,10 +1,13 @@
- <table>
+<% if @user.role_id==3  %>
+    <%=@user%>
+<table>
   <th>Product Name</th>
 
      <th>Quantity</th>
      <th>Product Total Price</th>
      <th>Product Receipt Number</th>
-<%@order=Order.find_all_by_user_id([session[:user_id]])%>
+  <th>User Name</th>
+<%@order=Order.all%>
       <%@order.each do |i|%>
           <%@product=Product.find(i.product_id)%>
 
@@ -12,7 +15,12 @@
             <%=@product.name%></td>
           <td><%=i.quantity %></td>
           <td><%= i.total_price %></td>
-          <td><%=i.receipt_id%></td> </tr>
+          <td><%=i.receipt_id%></td>
+          <%@us=User.find(i.user_id)  %>
+            <td><%= @us.name%></td></tr>
           <!--<tr><td></td> </tr>-->
       <%end%>
  </table>
+<% else %>
+    <%= @mess  %>
+<%end%>
