@@ -1,6 +1,15 @@
 OnlineDepot::Application.routes.draw do
-  get "galleries/index"
+  #scope :module => "admin" do
+    resources :posts
 
+      resources :comments
+  #end
+  #get "survey/new"
+     #match 'survey/new' => 'survey#new'
+  resources :survey
+  get "galleries/index"
+   get "galleries/module_test"
+    get "galleries/accordion"
   resources :products  do
    collection do
       get "cart"

@@ -78,3 +78,42 @@ td.alt {
     background: #F5FAFA;
     color: #B4AA9D;
 }
+
+/*.flash_notice {*/
+
+    /*BORDER-RIGHT: #090 4px solid; PADDING-RIGHT: 10px; BACKGROUND-POSITION: 5px 50%; BORDER-TOP: #090 4px solid; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(/images/icon_success_lrg.gif); PADDING-BOTTOM: 10px; MARGIN: 2px; BORDER-LEFT: #090 4px solid; TEXT-INDENT: 40px; PADDING-TOP: 10px; BORDER-BOTTOM: #090 4px solid; BACKGROUND-REPEAT: no-repeat*/
+
+/*}*/
+
+/*.flash_warning {*/
+
+    /*BORDER-RIGHT: #c60 4px solid; PADDING-RIGHT: 10px; BACKGROUND-POSITION: 5px 50%; BORDER-TOP: #c60 4px solid; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(/images/icon_warning_lrg.gif); PADDING-BOTTOM: 10px; MARGIN: 2px; BORDER-LEFT: #c60 4px solid; TEXT-INDENT: 40px; PADDING-TOP: 10px; BORDER-BOTTOM: #c60 4px solid; BACKGROUND-REPEAT: no-repeat*/
+
+/*}*/
+
+/*.flash_error {*/
+
+    /*BORDER-RIGHT: #f00 4px solid; PADDING-RIGHT: 10px; BACKGROUND-POSITION: 5px 50%; BORDER-TOP: #f00 4px solid; PADDING-LEFT: 10px; BACKGROUND-IMAGE: url(/images/icon_error_lrg.gif); PADDING-BOTTOM: 10px; MARGIN: 2px; BORDER-LEFT: #f00 4px solid; TEXT-INDENT: 40px; PADDING-TOP: 10px; BORDER-BOTTOM: #f00 4px solid; BACKGROUND-REPEAT: no-repeat*/
+
+/*}*/
+
+/*
+#flash_notice, #flash_error, #flash_alert {
+
+    margin: 10px 0;
+    height:42px;
+    line-height: 3em;
+    text-align:center;
+    color:#000;
+}
+
+#flash_notice {
+    margin-top:50px;
+    background-color: #CFC;
+    border: solid 5px #6C6;
+}
+
+#flash_error, #flash_alert {
+    background-color: #FCC;
+    border: solid 1px #C66;
+}*/

@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006045113) do
+ActiveRecord::Schema.define(:version => 20121027094149) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.string   "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "books", :force => true do |t|
+    t.string   "name"
+    t.integer  "survey_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "carts", :force => true do |t|
     t.integer  "quantity"
@@ -20,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20121006045113) do
     t.integer  "total_price"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "commenter_name"
+    t.text     "content"
+    t.integer  "post_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "companies", :force => true do |t|
@@ -75,6 +97,13 @@ ActiveRecord::Schema.define(:version => 20121006045113) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "posts", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -85,15 +114,28 @@ ActiveRecord::Schema.define(:version => 20121006045113) do
     t.datetime "updated_at",                                 :null => false
   end
 
+  create_table "questions", :force => true do |t|
+    t.integer  "survey_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "role_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  create_table "surveys", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.string   "password"
+    t.string   "password_hash"
     t.string   "email"
     t.integer  "role_id"
     t.datetime "created_at",      :null => false
@@ -101,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20121006045113) do
     t.string   "phone_number"
     t.date     "date_of_birth"
     t.string   "company_address"
+    t.string   "password_salt"
   end
 
 end

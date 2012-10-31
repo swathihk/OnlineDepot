@@ -6,8 +6,12 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
-
+group :development ,:test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -33,6 +37,6 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
+gem 'bcrypt-ruby',:require => "bcrypt"
 # To use debugger
 # gem 'debugger'

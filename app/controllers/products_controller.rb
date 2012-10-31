@@ -111,6 +111,7 @@ class ProductsController < ApplicationController
     logger.info"------------#{@quan}--#{@pro_price}------"
     flash[:notice] = "Product was successfully created."
     render :js=>"$('#quantity#{params[:cart_id]}').html(#{@total});"
+    #render :js=>"$('#role').html(#{@})"
     #@cart_value=
   end
   def order

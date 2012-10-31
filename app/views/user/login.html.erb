@@ -1,7 +1,9 @@
+
+<%= raw flash[:notice] %>
 <table cellpading="0">
 <%=form_for :users ,:url=>{:action => "login"} do |i| %>
-  <tr> <td>Email</td> <td><%=i.text_field :email%>  </td></tr>
-      <tr> <td>Password</td> <td> <%= i.password_field :password %></td></tr>
+  <tr> <td><%= i.label :email %></td> <td><%=i.text_field :email%>  </td></tr>
+      <tr> <td><%= i.label :password %></td> <td> <%= i.password_field :password %></td></tr>
       <tr><td></td><td> <%=i.submit "login" %></td></tr>
 <%end%>
 <%= session[:user_id]%>

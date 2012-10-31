@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
    attr_accessible :name, :password,:role_id,:email ,:terms_of_service,:email_confirmation,:date_of_birth,:phone_number,:company_address
    belongs_to :role
    belongs_to :product
+   attr_accessor :password
+
    validates :name ,:presence => true
    validates :password ,:presence => true
    validates :email ,:presence => true  ,:confirmation => true  ,:uniqueness => true
@@ -21,8 +23,28 @@ class User < ActiveRecord::Base
    #  end
    #end
    def self.authenticate?(email, password)
-     u = User.find_by_email email
-     u.password == password
+    # u = User.find_by_email email
+     #u.password == password
+     user = find_by_email(email)
+     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+       user
+     else
+       nil
+     end
    end
 has_many :orders
+   before_save :encrypt_password
+   #def encrypt_password
+     #self.password = encrypt(self.password)
+   #end
+   def encrypt_password
+     if password.present?
+       self.password_salt = BCrypt::Engine.generate_salt
+       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+     end
+   end
+
+   before_validation(:on => :create) do
+     self.name = name.gsub(%r/[^a-zA-Z]/, "") if attribute_present?("name")
+   end
 end
